@@ -1,0 +1,14 @@
+{
+  "commands": {
+    "top_comment": "Command palette entry. Moves the view, and in the editor the cursor, to the very start of the note.",
+    "top": "Jump to top of note",
+    "bottom_comment": "Command palette entry. Moves the view, and in the editor the cursor, to the very end of the note.",
+    "bottom": "Jump to bottom of note"
+  },
+  "button": {
+    "top_comment": "Tooltip of the floating up-arrow button in the corner of a note.",
+    "top": "Jump to top",
+    "bottom_comment": "Tooltip of the floating down-arrow button in the corner of a note.",
+    "bottom": "Jump to bottom"
+  }
+}

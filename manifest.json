@@ -1,0 +1,10 @@
+{
+  "id": "leapfrog",
+  "name": "LeapFrog",
+  "version": "0.1.0",
+  "minAppVersion": "1.13.0",
+  "description": "Jump to the top or bottom of a note with a floating button or a command.",
+  "author": "Vitaly Ditman",
+  "authorUrl": "https://github.com/Unpreditable",
+  "isDesktopOnly": false
+}
