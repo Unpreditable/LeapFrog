@@ -5,6 +5,149 @@
   },
   "button": {
     "top": "",
-    "bottom": ""
+    "bottom": "",
+    "back": ""
+  },
+  "settings": {
+    "presets": {
+      "heading": "",
+      "save": "",
+      "delete": "",
+      "names": {
+        "classic": "",
+        "minimal": "",
+        "middle-rail": "",
+        "bottom-bar": "",
+        "up-only": "",
+        "apart": ""
+      }
+    },
+    "save": {
+      "title": "",
+      "placeholder": "",
+      "empty": "",
+      "long": "",
+      "confirm": "",
+      "cancel": ""
+    },
+    "preview": {
+      "name": "",
+      "title": "",
+      "heading": "",
+      "intro": "",
+      "caption": "",
+      "sections": {
+        "jump": {
+          "heading": "",
+          "first": "",
+          "second": ""
+        },
+        "landing": {
+          "heading": "",
+          "first": "",
+          "second": ""
+        },
+        "contest": {
+          "heading": "",
+          "first": "",
+          "second": ""
+        },
+        "game": {
+          "heading": "",
+          "first": "",
+          "second": ""
+        }
+      }
+    },
+    "pages": {
+      "placement": "",
+      "look": "",
+      "behaviour": ""
+    },
+    "jumpBack": {
+      "name": "",
+      "desc": ""
+    },
+    "scroll": {
+      "name": "",
+      "instant": "",
+      "quick": "",
+      "smooth": ""
+    },
+    "buttons": {
+      "name": "",
+      "stacked": "",
+      "row": "",
+      "up": "",
+      "down": ""
+    },
+    "position": {
+      "name": "",
+      "desc": "",
+      "descRow": "",
+      "stops": {
+        "top": "",
+        "middle": "",
+        "bottom": ""
+      },
+      "handle": {
+        "up": "",
+        "down": "",
+        "pair": ""
+      },
+      "at": ""
+    },
+    "height": {
+      "name": "",
+      "auto": "",
+      "desc": ""
+    },
+    "side": {
+      "name": "",
+      "auto": "",
+      "left": "",
+      "right": "",
+      "desc": {
+        "auto": "",
+        "left": "",
+        "right": ""
+      }
+    },
+    "width": {
+      "name": ""
+    },
+    "roundness": {
+      "name": ""
+    },
+    "arrow": {
+      "name": "",
+      "arrow": "",
+      "thick": "",
+      "chevron": "",
+      "triangle": ""
+    },
+    "style": {
+      "name": "",
+      "outline": "",
+      "background": "",
+      "both": "",
+      "none": ""
+    },
+    "visibility": {
+      "name": "",
+      "desc": "",
+      "always": "",
+      "shape": "",
+      "hover": ""
+    },
+    "hoverShows": {
+      "name": "",
+      "one": "",
+      "both": ""
+    },
+    "look": {
+      "preview": "",
+      "scale": ""
+    }
   }
 }

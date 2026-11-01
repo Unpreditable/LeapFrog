@@ -13,3 +13,6 @@ e2e/.output/
 # The e2e fixture vault's settings are checked in, unlike a real vault's.
 !e2e/vault/.obsidian/
 !e2e/vault/.obsidian/plugins/*/data.json
+
+# Working notes from building the plugin.
+.superpowers/

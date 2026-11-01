@@ -17,8 +17,8 @@ npm run test:all                    # the unit tests, then every spec
 Each ends with a line to read at a glance; `test:all` with two:
 
 ```
-unitTests: 3/3 pass; 5s
-e2e: 5/5 pass; 11s
+unitTests: 50/50 pass; 10s
+e2e: 43/43 pass; 55s
 ```
 
 An Obsidian window opens and takes the keyboard until the run ends, so leave the machine alone
@@ -31,6 +31,8 @@ meanwhile.
 | `e2e.config.json` | The Obsidian version; no other plugins are needed |
 | `vault/` | The fixture vault every run starts from; empty, as the specs write their own notes |
 | `specs/jump.e2e.ts` | The floating buttons and the commands, in the editor and in reading view |
+| `specs/layout.e2e.ts` | Where the buttons sit: stops, side, the status bar, short panes, and nothing left once turned off |
+| `specs/settings.e2e.ts` | The settings clicked through: preset chips and saving, the sample note, the Placement and Look pages |
 | `tsconfig.json` | Type-checks the specs |
 | `harness.d.ts` | The harness's declarations of everything a spec can use. A copy: do not edit it |
 

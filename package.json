@@ -1,7 +1,7 @@
 {
   "name": "obsidian-leapfrog",
   "version": "0.1.0",
-  "description": "Jump to the top or bottom of a note with a floating button or a command.",
+  "description": "Jump to the top or bottom of a note, and back again, with floating buttons you can place and style.",
   "main": "main.js",
   "scripts": {
     "dev": "node esbuild.config.mjs",
@@ -17,6 +17,7 @@
   "author": "Vitaly Ditman",
   "license": "GPL-3.0-only",
   "devDependencies": {
+    "@codemirror/view": "^6.43.13",
     "@eslint/js": "^9.39.3",
     "@types/jest": "^29.5.0",
     "@types/node": "^24.19.1",

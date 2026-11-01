@@ -9,6 +9,238 @@
     "top_comment": "Tooltip of the floating up-arrow button in the corner of a note.",
     "top": "Jump to top",
     "bottom_comment": "Tooltip of the floating down-arrow button in the corner of a note.",
-    "bottom": "Jump to bottom"
+    "bottom": "Jump to bottom",
+    "back_comment": "Tooltip of a floating button after a jump, when clicking it again returns to where the note was before.",
+    "back": "Jump back"
+  },
+  "settings": {
+    "presets": {
+      "heading_comment": "Heading over the preset chips at the top of the settings.",
+      "heading": "Presets",
+      "save_comment": "Chip after the presets: saves the current settings as a new preset under a name.",
+      "save": "Save",
+      "delete_comment": "Tooltip of the bin icon on a preset the user saved: removes that preset.",
+      "delete": "Delete preset",
+      "names": {
+        "classic_comment": "Name of a built-in preset chip: both buttons together, one above the other, at the bottom, with a faint background.",
+        "classic": "Classic",
+        "minimal_comment": "Name of a built-in preset chip: small buttons with no background that appear only on hover.",
+        "minimal": "Minimal",
+        "middle-rail_comment": "Name of a built-in preset chip: both buttons together halfway down the side, outlined.",
+        "middle-rail": "Middle rail",
+        "bottom-bar_comment": "Name of a built-in preset chip: both buttons side by side at the bottom, as rounded squares.",
+        "bottom-bar": "Bottom bar",
+        "up-only_comment": "Name of a built-in preset chip: only the up button, a little larger.",
+        "up-only": "Up only",
+        "apart_comment": "Name of a built-in preset chip: the up button at the top of the note and the down button at the bottom.",
+        "apart": "Apart"
+      }
+    },
+    "save": {
+      "title_comment": "Title of the dialog that saves the current settings as a preset.",
+      "title": "Save preset",
+      "placeholder_comment": "Placeholder in the name field of the save dialog.",
+      "placeholder": "Name",
+      "empty_comment": "Shown under the name field when it is blank.",
+      "empty": "Give the preset a name.",
+      "long_comment": "Shown under the name field when the name is too long. {{max}} is the most characters allowed.",
+      "long": "Keep the name to {{max}} characters.",
+      "confirm_comment": "Button that saves the preset.",
+      "confirm": "Save",
+      "cancel_comment": "Button that closes the dialog without saving.",
+      "cancel": "Cancel"
+    },
+    "preview": {
+      "name_comment": "Name of the sample note's row on the main settings page. Not shown on the page; settings search finds it by this name.",
+      "name": "Preview",
+      "title_comment": "Title of the sample note, a short article about frogs under the settings.",
+      "title": "The Leap Frog",
+      "heading_comment": "Start of the heading above the sample note, in bold.",
+      "heading": "Preview.",
+      "intro_comment": "Rest of the heading above the sample note, in regular weight, right after the bold word.",
+      "intro": "Test your settings below.",
+      "caption_comment": "Caption under the sample note's picture. Keep the note that it is AI-generated: the terms of the tool that made it forbid passing it off as made by a person.",
+      "caption": "A frog resting on a wet leaf between leaps (AI-generated).",
+      "sections": {
+        "jump": {
+          "heading_comment": "Heading of a section in the sample note's article about frogs.",
+          "heading": "Built to jump",
+          "first_comment": "First paragraph of that section. Adapt it freely so that it reads well; only the facts must stay right.",
+          "first": "A frog's long hind legs fold up like a spring, and that is close to how they work. Before a jump, tendons in the legs stretch and store energy, then let it go faster than muscle alone could.",
+          "second_comment": "Second paragraph of that section. Adapt it freely so that it reads well; only the facts must stay right.",
+          "second": "Some frogs can clear more than twenty times their body length in one leap. A person with the same talent would cross a basketball court in a single bound."
+        },
+        "landing": {
+          "heading_comment": "Heading of a section in the sample note's article about frogs.",
+          "heading": "The landing",
+          "first_comment": "First paragraph of that section. Adapt it freely so that it reads well; only the facts must stay right.",
+          "first": "Taking off is only half the job. Many frogs reach forward with their front legs and let their arms and shoulders soak up the impact, then fold the rest of the body in behind them.",
+          "second_comment": "Second paragraph of that section. Adapt it freely so that it reads well; only the facts must stay right.",
+          "second": "Not every frog has mastered this. Pumpkin toadlets are so tiny that the balance organs in their ears seem barely to work, so they launch, tumble through the air and crash wherever they happen to come down."
+        },
+        "contest": {
+          "heading_comment": "Heading of a section in the sample note's article about frogs.",
+          "heading": "A famous contest",
+          "first_comment": "First paragraph of that section. Adapt it freely so that it reads well; only the facts must stay right.",
+          "first": "In 1865 Mark Twain made a frog famous with \"The Celebrated Jumping Frog of Calaveras County\", a story about a champion jumper that loses a contest after being filled with lead shot.",
+          "second_comment": "Second paragraph of that section. Adapt it freely so that it reads well; only the facts must stay right.",
+          "second": "Calaveras County in California still holds a frog jumping jubilee every year. The record belongs to Rosie the Ribeter, who covered 21 feet 5¾ inches (6.55 metres) in three hops in 1986."
+        },
+        "game": {
+          "heading_comment": "Heading of a section in the sample note's article about frogs.",
+          "heading": "The game",
+          "first_comment": "First paragraph of that section. Adapt it freely so that it reads well; only the facts must stay right.",
+          "first": "In the playground game of leapfrog, one player crouches and the next vaults over their back, then crouches in turn, so the whole line travels forward. Shakespeare mentions it in Henry V, so it is at least four hundred years old.",
+          "second_comment": "Second paragraph of that section. Adapt it freely so that it reads well; only the facts must stay right.",
+          "second": "The word has since become a verb: to leapfrog is to jump ahead of everything in between. Which is what the buttons on this note are for."
+        }
+      }
+    },
+    "pages": {
+      "placement_comment": "Row on the main settings page that opens the page about where the buttons sit.",
+      "placement": "Placement",
+      "look_comment": "Row on the main settings page that opens the page about how the buttons look.",
+      "look": "Look",
+      "behaviour_comment": "Row on the main settings page that opens the page about what a jump does, such as how the note scrolls.",
+      "behaviour": "Behaviour"
+    },
+    "jumpBack": {
+      "name_comment": "Toggle on the Behaviour page: whether a second click on a button returns to where the first one left.",
+      "name": "Jump back",
+      "desc_comment": "Description of that toggle.",
+      "desc": "Click the same button again to return to where you were."
+    },
+    "scroll": {
+      "name_comment": "Row on the Behaviour page: how the note moves on a jump.",
+      "name": "Scroll",
+      "instant_comment": "Choice: the note is there at once.",
+      "instant": "Instant",
+      "quick_comment": "Choice: a very short animated scroll.",
+      "quick": "Quick",
+      "smooth_comment": "Choice: a longer scroll that eases in and out.",
+      "smooth": "Smooth"
+    },
+    "buttons": {
+      "name_comment": "Row on the Placement page: which buttons show, and how two of them sit. The choices are pictures of arrows.",
+      "name": "Buttons",
+      "stacked_comment": "Tooltip of the choice showing ↑ above ↓: both buttons, one above the other.",
+      "stacked": "Stacked",
+      "row_comment": "Tooltip of the choice showing ↑ and ↓ next to each other.",
+      "row": "Side by side",
+      "up_comment": "Tooltip of the choice showing only ↑.",
+      "up": "Up only",
+      "down_comment": "Tooltip of the choice showing only ↓.",
+      "down": "Down only"
+    },
+    "position": {
+      "name_comment": "Row on the Placement page: a slider with five stops for where each button sits down the side of the note.",
+      "name": "Position",
+      "desc_comment": "Description under Position while the buttons are stacked or a single arrow.",
+      "desc": "Tall buttons shift to fit the note and avoid overlap.",
+      "descRow_comment": "Description under Position while the buttons are side by side, where the one handle moves the pair.",
+      "descRow": "Moves both buttons together.",
+      "stops": {
+        "top_comment": "Label under the first of five stops on the Position slider.",
+        "top": "Top",
+        "middle_comment": "Label under the middle of five stops on the Position slider.",
+        "middle": "Middle",
+        "bottom_comment": "Label under the last of five stops on the Position slider.",
+        "bottom": "Bottom"
+      },
+      "handle": {
+        "up_comment": "Screen-reader name of the slider handle that places the up button.",
+        "up": "Up button position",
+        "down_comment": "Screen-reader name of the slider handle that places the down button.",
+        "down": "Down button position",
+        "pair_comment": "Screen-reader name of the slider handle that places both buttons side by side.",
+        "pair": "Buttons position"
+      },
+      "at_comment": "What a screen reader says for a slider handle's place: stop {{n}} of {{of}}, counted from the top.",
+      "at": "Spot {{n}} of {{of}}, from the top"
+    },
+    "height": {
+      "name_comment": "Row on the Look page: a slider for how tall the buttons are, up to half the note.",
+      "name": "Height",
+      "auto_comment": "Shown beside the Height slider at its lowest: buttons as tall as they are wide.",
+      "auto": "Auto",
+      "desc_comment": "Description under Height on the Look page: what the setting does.",
+      "desc": "Share of note height. Auto matches width."
+    },
+    "side": {
+      "name_comment": "Row on the Placement page: which side of the note the buttons are on.",
+      "name": "Side",
+      "auto_comment": "Choice: the side where lines end, following Obsidian's right-to-left setting.",
+      "auto": "Auto",
+      "left_comment": "Choice: the left side of the note.",
+      "left": "Left",
+      "right_comment": "Choice: the right side of the note.",
+      "right": "Right",
+      "desc": {
+        "auto_comment": "Description of Side while Auto is chosen. Keep the <link> tags: the words between them open Obsidian's Editor settings. Use Obsidian's own names for the tab and the setting in your language.",
+        "auto": "Follows Settings → <link>Editor → Right-to-left (RTL)</link>.",
+        "left_comment": "Description of Side while Left is chosen.",
+        "left": "Always on the left.",
+        "right_comment": "Description of Side while Right is chosen.",
+        "right": "Always on the right."
+      }
+    },
+    "width": {
+      "name_comment": "Row on the Look page: a slider for how wide the buttons are; also how tall, while Height is Auto.",
+      "name": "Width"
+    },
+    "roundness": {
+      "name_comment": "Row on the Look page: a slider from square buttons to round ones.",
+      "name": "Roundness"
+    },
+    "arrow": {
+      "name_comment": "Row on the Look page: which icon the buttons use. Its choices are pictures of the icons; these names are their tooltips.",
+      "name": "Arrow",
+      "arrow_comment": "Tooltip of the choice showing a plain arrow.",
+      "arrow": "Arrow",
+      "thick_comment": "Tooltip of the choice showing a thick, block-shaped arrow.",
+      "thick": "Thick",
+      "chevron_comment": "Tooltip of the choice showing a chevron: an arrowhead with no shaft.",
+      "chevron": "Chevron",
+      "triangle_comment": "Tooltip of the choice showing a triangle.",
+      "triangle": "Triangle"
+    },
+    "style": {
+      "name_comment": "Row on the Look page: what draws the button's shape around its arrow.",
+      "name": "Shape",
+      "outline_comment": "Choice: a thin line around each button.",
+      "outline": "Outline",
+      "background_comment": "Choice: a faint filled background behind each button.",
+      "background": "Background",
+      "both_comment": "Choice: a thin line and a faint background together.",
+      "both": "Both",
+      "none_comment": "Choice: no line and no background, only the arrow.",
+      "none": "None"
+    },
+    "visibility": {
+      "name_comment": "Row on the Look page: what of a button can be seen before the pointer is over it.",
+      "name": "Show",
+      "desc_comment": "Description under Show, only for Shape and On hover: the previews at the top of the page react to the pointer.",
+      "desc": "Hover over a preview to see it.",
+      "always_comment": "Choice: the arrow and its shape are always shown.",
+      "always": "Arrow + Shape",
+      "shape_comment": "Choice: only the button's shape shows; its arrow appears on hover.",
+      "shape": "Shape",
+      "hover_comment": "Choice: nothing shows until the pointer is over a button.",
+      "hover": "On hover"
+    },
+    "hoverShows": {
+      "name_comment": "Row on the Look page, shown for Shape and On hover: which buttons appear when the pointer is over one.",
+      "name": "Reveal",
+      "one_comment": "Choice: only the button under the pointer.",
+      "one": "Under cursor",
+      "both_comment": "Choice: both buttons at once.",
+      "both": "Both"
+    },
+    "look": {
+      "preview_comment": "Heading over the Look page's previews of the buttons.",
+      "preview": "Preview",
+      "scale_comment": "Line under the Look page's previews: the previews show Height as a share of the preview, not at the note's size.",
+      "scale": "Height is not to scale here: it takes its share of each preview, as it would of a note."
+    }
   }
 }

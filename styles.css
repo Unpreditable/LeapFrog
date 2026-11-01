@@ -1,29 +1,444 @@
 /* LeapFrog */
 
-/* The floating buttons: a small pill in the note's bottom-right corner that stays put while the
-   note scrolls under it. */
+/* A note's buttons are placed against the note's own area, which does not scroll: the editor and
+   reading view scroll inside it, so the buttons stay put while the note moves under them. */
+.leapfrog-has-buttons {
+  position: relative;
+}
+
+/* Room to scroll past a note's end, so a jump can leave a third of it blank. Reading view has its own. */
+.leapfrog-has-buttons .markdown-source-view.mod-cm6 .cm-sizer {
+  padding-bottom: 34vh;
+}
+
 .leapfrog-buttons {
   position: absolute;
-  inset-block-end: var(--size-4-4);
-  inset-inline-end: var(--size-4-4);
+  inset: 0;
   z-index: var(--layer-cover);
+  pointer-events: none;
+}
+
+/* The Look previews: both buttons in a row or a column, with no placement. */
+.leapfrog-buttons.is-inline {
+  position: static;
   display: flex;
+  gap: var(--size-2-3);
+}
+
+.leapfrog-buttons.is-inline.is-stacked {
   flex-direction: column;
-  gap: var(--size-2-1);
-  padding: var(--size-2-1);
-  border: var(--border-width) solid var(--background-modifier-border);
-  border-radius: var(--radius-l);
-  background-color: var(--background-primary);
-  box-shadow: var(--shadow-s);
-  opacity: 0.6;
+}
+
+/* Sizes and positions are computed, so they arrive as custom properties set on each button. */
+.leapfrog-buttons .leapfrog-button {
+  position: absolute;
+  top: var(--leapfrog-top);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--leapfrog-width);
+  height: var(--leapfrog-height);
+  padding: 0;
+  border: var(--border-width) solid transparent;
+  /* Against the width, so a round tall button is a pill with semicircle ends. */
+  border-radius: calc(var(--leapfrog-roundness) * var(--leapfrog-width) / 200);
+  background-color: transparent;
+  box-shadow: none;
+  color: var(--icon-color);
+  cursor: var(--cursor);
+  pointer-events: auto;
+  transition: background-color 150ms ease-in-out, opacity 150ms ease-in-out;
+}
+
+.leapfrog-buttons.is-right .leapfrog-button {
+  right: var(--leapfrog-offset);
+}
+
+.leapfrog-buttons.is-left .leapfrog-button {
+  left: var(--leapfrog-offset);
+}
+
+.leapfrog-buttons.is-inline .leapfrog-button {
+  position: static;
+}
+
+.leapfrog-buttons .leapfrog-button svg {
+  /* The arrow keeps the size it has in a round button, however tall the button. */
+  width: calc(var(--leapfrog-width) * 0.55);
+  height: calc(var(--leapfrog-width) * 0.55);
   transition: opacity 150ms ease-in-out;
 }
 
-.leapfrog-buttons:hover,
-.leapfrog-buttons:focus-within {
+/* The line is a step stronger than Obsidian's borders, so it still shows over the background. */
+.leapfrog-buttons.leapfrog-style-outline .leapfrog-button {
+  border-color: var(--text-faint);
+}
+
+.leapfrog-buttons.leapfrog-style-background .leapfrog-button {
+  background-color: var(--background-modifier-hover);
+}
+
+.leapfrog-buttons.leapfrog-style-both .leapfrog-button {
+  border-color: var(--text-faint);
+  background-color: var(--background-modifier-hover);
+}
+
+/* Out of the text cursor's way, while still there to find and click. */
+.leapfrog-buttons .leapfrog-button.is-over-caret:not(:hover, :focus-visible) {
+  opacity: 0.15;
+}
+
+/* Hover only tints: a button never grows, shrinks or moves under the pointer. */
+.leapfrog-buttons .leapfrog-button:hover {
+  background-color: var(--background-modifier-active-hover);
+  color: var(--icon-color-hover);
+}
+
+/* Shape: the shape without its arrow, until revealed. */
+.leapfrog-buttons.leapfrog-visibility-shape .leapfrog-button svg {
+  opacity: 0;
+}
+
+.leapfrog-buttons.leapfrog-visibility-shape.is-revealed .leapfrog-button svg,
+.leapfrog-buttons.leapfrog-visibility-shape .leapfrog-button.is-revealed svg,
+.leapfrog-buttons.leapfrog-visibility-shape .leapfrog-button:focus-visible svg {
   opacity: 1;
 }
 
-.leapfrog-button {
-  padding: var(--size-2-2);
+/* On hover: nothing at all, until revealed. The button still takes the pointer while unseen. */
+.leapfrog-buttons.leapfrog-visibility-hover .leapfrog-button {
+  opacity: 0;
+}
+
+.leapfrog-buttons.leapfrog-visibility-hover.is-revealed .leapfrog-button,
+.leapfrog-buttons.leapfrog-visibility-hover .leapfrog-button.is-revealed,
+.leapfrog-buttons.leapfrog-visibility-hover .leapfrog-button:focus-visible {
+  opacity: 1;
+}
+
+/* The Position slider: a thin track with five stops, a handle for each arrow shown. */
+.leapfrog-position {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2-2);
+  width: 240px;
+  max-width: 100%;
+}
+
+.leapfrog-position-track {
+  position: relative;
+  height: 2px;
+  margin: var(--size-4-3) var(--size-4-2) 0;
+  background-color: var(--background-modifier-border-hover);
+  cursor: var(--cursor);
+}
+
+.leapfrog-position-mark {
+  position: absolute;
+  top: 50%;
+  left: var(--leapfrog-at);
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--background-primary);
+  border-radius: 50%;
+  background-color: var(--text-muted);
+  transform: translate(-50%, -50%);
+}
+
+.leapfrog-handle {
+  position: absolute;
+  top: 50%;
+  left: var(--leapfrog-at);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 var(--size-2-1);
+  border-radius: var(--radius-l);
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+  --icon-size: var(--icon-xs);
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  touch-action: none;
+}
+
+/* Two handles on one stop sit side by side, meeting at the stop, so either can be grabbed. */
+.leapfrog-handle.is-before {
+  transform: translate(-100%, -50%);
+}
+
+.leapfrog-handle.is-after {
+  transform: translate(0, -50%);
+}
+
+.leapfrog-handle:focus-visible {
+  box-shadow: 0 0 0 2px var(--background-modifier-border-focus);
+  outline: none;
+}
+
+.leapfrog-position-labels {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+}
+
+/* The Buttons pills: pictures of the arrows, stacked or side by side. */
+.leapfrog-pill-arrows {
+  --icon-size: var(--icon-s);
+  display: inline-flex;
+  gap: var(--size-4-2);
+  line-height: 1;
+}
+
+.leapfrog-pill-arrows.is-stacked {
+  --icon-size: var(--icon-xs);
+  flex-direction: column;
+  gap: 0;
+}
+
+.leapfrog-pill-arrows span,
+.leapfrog-handle span {
+  display: flex;
+}
+
+/* Obsidian has no triangle pointing down. */
+.leapfrog-arrow-flipped {
+  transform: rotate(180deg);
+}
+
+/* The way-back icon points left as drawn; it is turned to point where the jump back goes. */
+.leapfrog-back-up {
+  transform: rotate(90deg);
+}
+
+.leapfrog-back-down {
+  transform: rotate(-90deg);
+}
+
+/* The Look page's previews: a square for each Buttons choice, named above it, under a heading. */
+.leapfrog-look-heading {
+  margin-bottom: var(--size-4-2);
+  color: var(--text-normal);
+  font-size: var(--font-ui-medium);
+  font-weight: var(--font-semibold);
+}
+
+.leapfrog-look-previews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: var(--size-4-3);
+  margin-bottom: var(--size-4-4);
+}
+
+.leapfrog-look-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--size-2-3);
+}
+
+/* The line under the previews: Height is not to scale there. */
+.leapfrog-look-note {
+  margin: calc(var(--size-4-2) * -1) 0 var(--size-4-4);
+  color: var(--text-muted);
+  font-size: var(--font-ui-small);
+  text-align: center;
+}
+
+/* Twice Obsidian's slider width: the Look page has the room. */
+.leapfrog-wide-slider .slider {
+  width: 300px;
+  max-width: 100%;
+}
+
+.leapfrog-look-preview-name {
+  color: var(--text-muted);
+  font-size: var(--font-ui-small);
+}
+
+.leapfrog-look-preview-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 200px;
+  padding: var(--size-4-3);
+  border-radius: var(--radius-m);
+  background-color: var(--background-secondary);
+}
+
+/* Rows drawn across the whole width: the chips, the sample note. Their name is for search only. */
+.leapfrog-wide-row .setting-item-info {
+  display: none;
+}
+
+.leapfrog-wide-row .setting-item-control {
+  flex: 1 1 auto;
+  justify-content: flex-start;
+}
+
+/* Preset chips: a name, and a bin on the user's own. They wrap rather than scroll. */
+.leapfrog-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-2-3);
+  min-width: 0;
+}
+
+.leapfrog-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-2-1);
+  padding: 0 var(--size-2-2) 0 0;
+  border: var(--border-width) solid var(--background-modifier-border);
+  border-radius: var(--radius-l);
+  background-color: var(--background-primary);
+}
+
+.leapfrog-chip.is-active {
+  border-color: var(--interactive-accent);
+  background-color: var(--background-modifier-hover);
+}
+
+.leapfrog-chips .leapfrog-chip-name,
+.leapfrog-chips .leapfrog-chip-save {
+  height: auto;
+  padding: var(--size-2-2) var(--size-4-3);
+  border: none;
+  border-radius: var(--radius-l);
+  background-color: transparent;
+  box-shadow: none;
+  font-size: var(--font-ui-small);
+}
+
+.leapfrog-chips .leapfrog-chip-save {
+  gap: var(--size-2-1);
+  padding-inline-end: var(--size-4-3);
+  border: var(--border-width) dashed var(--background-modifier-border);
+  color: var(--text-muted);
+}
+
+.leapfrog-chip-icon {
+  display: inline-flex;
+}
+
+.leapfrog-chips .leapfrog-chip-delete {
+  padding: var(--size-2-1);
+}
+
+/* Option pills: every value in view, the chosen one highlighted. They join into one control —
+   rounded only on its outer corners, a line between each — so it reads how many values there are. */
+.leapfrog-pills {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  overflow: hidden;
+  border: var(--border-width) solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  background-color: var(--background-modifier-form-field);
+}
+
+.leapfrog-pills .leapfrog-pill {
+  height: auto;
+  min-width: 36px;
+  padding: var(--size-2-2) var(--size-4-3);
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+  color: var(--text-muted);
+  font-size: var(--font-ui-small);
+}
+
+.leapfrog-pills .leapfrog-pill + .leapfrog-pill {
+  border-inline-start: var(--border-width) solid var(--background-modifier-border);
+}
+
+.leapfrog-pills .leapfrog-pill.is-active {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+
+.leapfrog-save-error {
+  min-height: 1.5em;
+  margin-top: var(--size-2-2);
+  color: var(--text-error);
+  font-size: var(--font-ui-small);
+}
+
+.leapfrog-save-modal input {
+  width: 100%;
+}
+
+/* The main page is tighter than Obsidian's usual, to leave the sample note room. */
+.vertical-tab-content.leapfrog-tab {
+  --setting-items-padding-y: var(--size-4-2);
+  padding-top: var(--size-4-4);
+  padding-bottom: var(--size-4-4);
+}
+
+.leapfrog-tab .setting-group + .setting-group {
+  margin-top: var(--size-4-3);
+}
+
+.leapfrog-tab .setting-group .setting-item-heading {
+  margin-bottom: var(--size-4-2);
+}
+
+.leapfrog-sample-intro {
+  font-weight: var(--font-normal);
+}
+
+/* The note fills its card, which has no padding of its own. */
+.leapfrog-sample-group {
+  --setting-items-padding-x: 0;
+  --setting-items-padding-y: 0;
+}
+
+/* The sample note under the main page's rows. */
+.leapfrog-sample {
+  position: relative;
+  width: 100%;
+  height: var(--leapfrog-sample-height, 500px);
+  overflow: hidden;
+  border: var(--border-width) solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  background-color: var(--background-primary);
+}
+
+/* Placement and Look read as one block: no divider between them. */
+.setting-group.leapfrog-sections {
+  --setting-items-divider-color: transparent;
+}
+
+/* Reads as a note: a settings row's control aligns its text to the end. */
+.leapfrog-sample-text {
+  height: 100%;
+  text-align: start;
+  overflow-y: auto;
+  padding: var(--size-4-4) var(--size-4-12) calc(var(--leapfrog-sample-height, 500px) / 3);
+}
+
+/* Obsidian hides any h1 in a settings tab. */
+.leapfrog-sample-text h1 {
+  display: block;
+  margin-top: 0;
+  font-size: var(--font-ui-large);
+}
+
+.leapfrog-sample-figure {
+  margin: var(--size-4-4) 0;
+  color: var(--text-muted);
+  font-size: var(--font-ui-small);
+  text-align: center;
+}
+
+.leapfrog-sample-figure img {
+  display: block;
+  width: 100%;
+  margin-bottom: var(--size-4-2);
+  border-radius: var(--radius-m);
 }

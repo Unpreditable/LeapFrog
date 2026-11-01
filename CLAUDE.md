@@ -50,17 +50,30 @@ running, any source change auto-reloads the plugin without restarting Obsidian.
 
 ## Architecture
 
-**Purpose**: jump to the top or bottom of a note, from a floating button or a command.
+**Purpose**: jump to the top or bottom of a note, from a floating button or a command. The buttons'
+place and look are configurable, with presets and a preview in the settings; how the note scrolls
+is too.
 
 ### Key files
 
 | File | Role |
 |---|---|
-| [src/main.ts](src/main.ts) | Plugin entry point: registers the commands and gives every open note its buttons |
+| [src/main.ts](src/main.ts) | Plugin entry point: loads the settings, registers the commands and the tab, and keeps one `ButtonHost` per open note |
 | [src/i18n/i18n.ts](src/i18n/i18n.ts) | i18next init; every user-visible string goes through `t()` |
 | [src/edge.ts](src/edge.ts) | Pure: where the cursor lands for a jump |
-| [src/jump.ts](src/jump.ts) | Performs a jump: cursor and scroll in the editor, scroll only in reading view |
-| [src/button.ts](src/button.ts) | The floating buttons: adds them to a note, and removes them all on unload |
+| [src/jump.ts](src/jump.ts), [src/scroll.ts](src/scroll.ts) | Performs a jump: cursor and scroll in the editor, scroll only in reading view; the animated scroll, which the wheel or a key stops |
+| [src/settings.ts](src/settings.ts) | Pure: settings and saved-preset types, built-in presets, blocking handles, which chip is marked, validation of data.json |
+| [src/layout.ts](src/layout.ts) | Pure: where each button goes in a given room — the five stops, Height, the fixed gap, the status bar's cover, shrink-to-fit — and Side Auto |
+| [src/arrows.ts](src/arrows.ts) | The arrow icon for each Arrow choice, on the buttons and in the settings |
+| [src/jump-back.ts](src/jump-back.ts) | The second click that goes back to where the first one left, until the user moves on |
+| [src/caret-watch.ts](src/caret-watch.ts) | Fades a button covering the text cursor. Runs on every keystroke, so it must stay inside the editor's measuring |
+| [src/buttons.ts](src/buttons.ts) | `ButtonHost`: draws the buttons into a note, a Look preview or the sample note, and redraws them when their host or the status bar resizes |
+| [src/settings/settings-tab.ts](src/settings/settings-tab.ts) | Main settings page (Obsidian 1.13 declarative definitions): preset chips, the page rows and the sample note |
+| [src/settings/placement-page.ts](src/settings/placement-page.ts), [look-page.ts](src/settings/look-page.ts), [behaviour-page.ts](src/settings/behaviour-page.ts) | The three settings pages, drawn by hand as `SettingPage`s |
+| [src/settings/chips.ts](src/settings/chips.ts) | Preset chips and the dialog that names a saved preset |
+| [src/settings/pills.ts](src/settings/pills.ts) | Option pills, used for every choice of two to four values |
+| [src/settings/position-slider.ts](src/settings/position-slider.ts) | The five-stop Position slider; handles block at each other |
+| [src/settings/preview.ts](src/settings/preview.ts) | The main page's sample note, with a photo inlined into `main.js` |
 
 ### i18n
 

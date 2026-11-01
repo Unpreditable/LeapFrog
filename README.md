@@ -1,15 +1,18 @@
 # LeapFrog
 
-Jump to the top or bottom of a note in one click.
+Adds two floating buttons to every note, to jump to its top or bottom in one click.
 
-A small pair of arrows floats in the corner of every note. ↑ takes you to the start of the note, ↓
-to the end. In the editor the cursor moves with you, so you can start typing straight away. Reading
-view scrolls.
-
-The same jumps are commands, so you can bind them to hotkeys under **Settings → Hotkeys**:
+The same jumps are commands, so you can run them from the command palette or give them a hotkey:
 
 - **LeapFrog: Jump to top of note**
 - **LeapFrog: Jump to bottom of note**
+
+## Settings
+
+- **Presets:** ready-made looks, and your own saved ones.
+- **Placement:** which buttons show, and where they sit.
+- **Look:** size, shape, arrow icon, and when the buttons show.
+- **Behaviour:** how the note scrolls, and jumping back to where you were.
 
 ---
 
