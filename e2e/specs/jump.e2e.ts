@@ -137,15 +137,18 @@ describe("The floating buttons", () => {
     // Off the buttons: an earlier test clicked one, and hovering shows it too.
     await $(".workspace-leaf.mod-active .view-header-title").click();
     await browser.pause(200);
-    const opacity = await browser.execute((selector) => {
-      const button = document.querySelector<HTMLElement>(`.workspace-leaf.mod-active ${selector}`);
-      if (!button) throw new Error("no button");
-      button.style.transition = "none";
-      const hidden = getComputedStyle(button).opacity;
-      (button.focus as (options: { focusVisible: boolean }) => void)({ focusVisible: true });
-      return [hidden, getComputedStyle(button).opacity];
+    const opacity = (): Promise<string> =>
+      browser.execute((selector) => {
+        const button = document.querySelector(`.workspace-leaf.mod-active ${selector}`);
+        if (!button) throw new Error("no button");
+        return getComputedStyle(button).opacity;
+      }, TOP);
+    expect(await opacity()).toBe("0");
+    await browser.execute((selector) => {
+      const options = { preventScroll: true, focusVisible: true };
+      document.querySelector<HTMLElement>(`.workspace-leaf.mod-active ${selector}`)?.focus(options);
     }, TOP);
-    expect(opacity).toEqual(["0", "1"]);
+    await browser.waitUntil(async () => (await opacity()) === "1", { timeoutMsg: "the focused button stayed hidden" });
     await setPluginSettings(LF, { visibility: "always" });
   });
 
